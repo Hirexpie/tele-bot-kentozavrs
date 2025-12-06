@@ -59,7 +59,7 @@ export class BotCmd {
             Markup.inlineKeyboard([
                 [Markup.button.callback("ставить 100", "stav100"), Markup.button.callback("ставить 300", "stav300")],
                 [Markup.button.callback("ставить 500", "stav500"), Markup.button.callback("ставить 1000", "stav1000")],
-                [Markup.button.callback("информация про меня", "me")]
+                [Markup.button.callback("информация про меня", "me"), Markup.button.callback("все пользавательи", "all")]
             ])
         );
     }
@@ -262,7 +262,6 @@ export class BotCmd {
 
     public async getAllusers(ctx: Context<any>) {
         const users = await User.find();
-        const userNiks = users.map(u => u.name);
         let message = "пользаватели:\n";
         for (const user of users) {
             message += `${user.name};\n`

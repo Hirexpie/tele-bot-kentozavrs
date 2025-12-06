@@ -27,7 +27,7 @@ export class BotCmd {
     }
 
     public async help(ctx: Context<any>) {
-        await ctx.reply(`\"reg - зарегестрироватся при регистраций дается 3000 денег \n sand <sum> <username> - отправить комуто определенныю сумму \n cmd - разшыренны набор команд`)
+        await ctx.reply(`/reg - зарегестрироватся при регистраций дается 3000 денег \nsand <sum> <username> - отправить комуто определенныю сумму \ncmd - разшыренны набор команд`)
     }
 
     public async onAnyCmd(ctx: Context<any>) {
@@ -257,7 +257,7 @@ export class BotCmd {
             return;
         }
 
-        await ctx.reply(`Имя: ${user.name},\n Баланс: ${user.balance},\n Телеграм Id: ${user.TeleId},\n Id: ${user._id}`)
+        await ctx.reply(`Имя: ${user.name},\nБаланс: ${user.balance},\nТелеграм Id: ${user.TeleId},\nId: ${user._id}`)
     }
 
 }

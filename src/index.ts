@@ -21,6 +21,7 @@ bot.start((ctx) => {
 });
 
 bot.hears("/reg", ctx => cmd.register(ctx))
+bot.hears("/help", ctx => cmd.register(ctx))
 bot.on("text", ctx => cmd.onAnyCmd(ctx))
 
 

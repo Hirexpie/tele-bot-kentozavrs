@@ -26,6 +26,10 @@ export class BotCmd {
         }
     }
 
+    public async help(ctx: Context<any>) {
+        await ctx.reply(`\"reg - зарегестрироватся при регистраций дается 3000 денег \n sand <sum> <username> - отправить комуто определенныю сумму \n cmd - разшыренны набор команд`)
+    }
+
     public async onAnyCmd(ctx: Context<any>) {
 
         if (!ctx.from || !ctx.message?.text) {
@@ -253,12 +257,7 @@ export class BotCmd {
             return;
         }
 
-        await ctx.reply(`
-            Имя: ${user.name}, 
-            Баланс: ${user.balance}, 
-            Телеграм Id: ${user.TeleId}, 
-            Id: ${user._id}, 
-        `)
+        await ctx.reply(`Имя: ${user.name},\n Баланс: ${user.balance},\n Телеграм Id: ${user.TeleId},\n Id: ${user._id}`)
     }
 
 }

@@ -33,6 +33,7 @@ bot.action("stav500", ctx => cmd.stav500(ctx))
 bot.action("stav1000", ctx => cmd.stav1000(ctx))
 
 bot.action("me", ctx => cmd.me(ctx))
+bot.action("all", ctx => cmd.getAllusers(ctx))
 
 
 

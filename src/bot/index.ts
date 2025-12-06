@@ -145,13 +145,13 @@ export class BotCmd {
         const win = Math.random() < 0.1;
 
         if (win) {
-            user.balance += price * 3; // выиграл = чистая прибыль 900 (или можешь поставить +1000)
+            user.balance += price * 5;
             await user.save();
-            await ctx.reply("Вы выиграли! +900 к балансу!");
+            await ctx.reply(`Вы выиграли! +${price * 4} к балансу!`);
         } else {
             user.balance -= price;
             await user.save();
-            await ctx.reply("Вы проиграли 100");
+            await ctx.reply(`Вы проиграли ${price}`);
         }
     }
 
@@ -176,13 +176,13 @@ export class BotCmd {
         const win = Math.random() < 0.1;
 
         if (win) {
-            user.balance += price * 3; // выиграл = чистая прибыль 900 (или можешь поставить +1000)
+            user.balance += price * 5;
             await user.save();
-            await ctx.reply("Вы выиграли! +900 к балансу!");
+            await ctx.reply(`Вы выиграли! +${price * 4} к балансу!`);
         } else {
             user.balance -= price;
             await user.save();
-            await ctx.reply("Вы проиграли 100");
+            await ctx.reply(`Вы проиграли ${price}`);
         }
     }
     public async stav500(ctx: Context<any>) {
@@ -206,13 +206,13 @@ export class BotCmd {
         const win = Math.random() < 0.1;
 
         if (win) {
-            user.balance += price * 3; // выиграл = чистая прибыль 900 (или можешь поставить +1000)
+            user.balance += price * 5;
             await user.save();
-            await ctx.reply("Вы выиграли! +900 к балансу!");
+            await ctx.reply(`Вы выиграли! +${price * 4} к балансу!`);
         } else {
             user.balance -= price;
             await user.save();
-            await ctx.reply("Вы проиграли 100");
+            await ctx.reply(`Вы проиграли ${price}`);
         }
     }
     public async stav1000(ctx: Context<any>) {
@@ -236,13 +236,13 @@ export class BotCmd {
         const win = Math.random() < 0.1;
 
         if (win) {
-            user.balance += price * 3; // выиграл = чистая прибыль 900 (или можешь поставить +1000)
+            user.balance += price * 5;
             await user.save();
-            await ctx.reply("Вы выиграли! +900 к балансу!");
+            await ctx.reply(`Вы выиграли! +${price * 4} к балансу!`);
         } else {
             user.balance -= price;
             await user.save();
-            await ctx.reply("Вы проиграли 100");
+            await ctx.reply(`Вы проиграли ${price}`);
         }
     }
 
@@ -258,6 +258,16 @@ export class BotCmd {
         }
 
         await ctx.reply(`Имя: ${user.name},\nБаланс: ${user.balance},\nТелеграм Id: ${user.TeleId},\nId: ${user._id}`)
+    }
+
+    public async getAllusers(ctx: Context<any>) {
+        const users = await User.find();
+        const userNiks = users.map(u => u.name);
+        let message = "пользаватели:\n";
+        for (const user of users) {
+            message += `${user.name};\n`
+        }
+        ctx.reply(message);
     }
 
 }

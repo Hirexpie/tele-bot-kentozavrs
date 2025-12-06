@@ -1,8 +1,10 @@
 import { Markup, Telegraf } from "telegraf";
 import { BotCmd } from "./bot";
 import { connectDB } from "./db";
+import dotenv from "dotenv";
+dotenv.config();
 
-const token = "token"
+const token = process.env.BOT_TOKEN ?? ""
 
 const bot = new Telegraf(token);
 const cmd = new BotCmd();

@@ -1,13 +1,14 @@
 import { Markup, Telegraf } from "telegraf";
-import { BotCmd } from "./bot";
+import { cmd } from "./bot";
+import { kazik } from "./bot/kazik";
 import { connectDB } from "./db";
 import dotenv from "dotenv";
 dotenv.config();
 
 const token = process.env.BOT_TOKEN ?? ""
+console.log(token);
 
 const bot = new Telegraf(token);
-const cmd = new BotCmd();
 
 
 bot.start((ctx) => {
@@ -27,10 +28,11 @@ bot.hears("/help", ctx => cmd.help(ctx))
 bot.on("text", ctx => cmd.onAnyCmd(ctx))
 
 
-bot.action("stav100", ctx => cmd.stav100(ctx))
-bot.action("stav300", ctx => cmd.stav300(ctx))
-bot.action("stav500", ctx => cmd.stav500(ctx))
-bot.action("stav1000", ctx => cmd.stav1000(ctx))
+bot.action("stav100", ctx => kazik.stavka(ctx, 100))
+bot.action("stav300", ctx => kazik.stavka(ctx, 100))
+bot.action("stav500", ctx => kazik.stavka(ctx, 500))
+bot.action("stav1000", ctx => kazik.stavka(ctx, 1000))
+bot.action("freeMony", ctx => kazik.freeMony(ctx, 1000))
 
 bot.action("me", ctx => cmd.me(ctx))
 bot.action("all", ctx => cmd.getAllusers(ctx))

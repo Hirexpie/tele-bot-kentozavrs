@@ -40,9 +40,6 @@ class BotCmd {
             return;
         }
 
-        if (ctx.from.username === "bilmansur") {
-            await ctx.reply(`маленким слова не довали`);
-        }
         const args = ctx.message.text.split(" ");
 
         const cmd = args[0];
@@ -53,8 +50,9 @@ class BotCmd {
             case "cmd": await kazik.rulet(ctx); break;
             case "atk": await rpg.attak(ctx); break;
             case "dep":
-                if (arg1 !== 0) {
+                if (arg1 === 0) {
                     await ctx.reply(`нужно ввисти dep <число>`);
+                    return
                 }
                 await kazik.stavka(ctx, arg1);
                 break;

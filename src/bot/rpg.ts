@@ -122,13 +122,13 @@ class Rpg {
                 await ctx.reply(`Вы лох`);
                 break;
             case num > 60 && num <= 80:
-                const amont3 = receiver.balance * 0.3;
+                const amont3 = sender.balance * 0.3;
                 sender.balance -= amont3;
                 receiver.balance += amont3;
                 await ctx.reply(`Вы потеряли ${amont3} (30%) денег у пользователя ${targetUsername}`);
                 break;
             case num > 80 && num <= 100:
-                const amont4 = receiver.balance * 0.5;
+                const amont4 = sender.balance * 0.5;
                 sender.balance -= amont4;
                 receiver.balance += amont4;
                 await ctx.reply(`Вы потеряли ${amont4} (50%) денег у пользователя ${targetUsername}`);

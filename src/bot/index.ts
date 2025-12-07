@@ -52,6 +52,7 @@ export class BotCmd {
             case "иди наху": ctx.reply("кусай за хуй"); break;
             case "пошел наху": ctx.reply("кусай за хуй"); break;
             case "пошел нахуй": ctx.reply("кусай за хуй"); break;
+            case "пошел на хуй": ctx.reply("кусай за хуй"); break;
         }
     }
 

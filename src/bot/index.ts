@@ -34,11 +34,15 @@ class BotCmd {
 
     public async onAnyCmd(ctx: Context<any>) {
 
+
         if (!ctx.from || !ctx.message?.text) {
             await ctx.reply("Ошибка отправки");
             return;
         }
 
+        if (ctx.from.username === "bilmansur") {
+            await ctx.reply(`завали ебало ${ctx.from.username}`);
+        }
         const args = ctx.message.text.split(" ");
 
         const cmd = args[0];

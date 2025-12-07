@@ -139,8 +139,8 @@ export class BotCmd {
             return;
         }
 
-        if (user.balance <= price) {
-            await ctx.reply("Недостаточно средств! Нужно минимум 100.");
+        if (user.balance < price) {
+            await ctx.reply(`Недостаточно средств! Нужно минимум ${price}.`);
             return;
         }
 
@@ -170,8 +170,8 @@ export class BotCmd {
             return;
         }
 
-        if (user.balance <= price) {
-            await ctx.reply("Недостаточно средств! Нужно минимум 100.");
+        if (user.balance < price) {
+            await ctx.reply(`Недостаточно средств! Нужно минимум ${price}.`);
             return;
         }
 
@@ -200,8 +200,8 @@ export class BotCmd {
             return;
         }
 
-        if (user.balance <= price) {
-            await ctx.reply("Недостаточно средств! Нужно минимум 100.");
+        if (user.balance < price) {
+            await ctx.reply(`Недостаточно средств! Нужно минимум ${price}.`);
             return;
         }
 
@@ -230,8 +230,8 @@ export class BotCmd {
             return;
         }
 
-        if (user.balance <= price) {
-            await ctx.reply("Недостаточно средств! Нужно минимум 100.");
+        if (user.balance < price) {
+            await ctx.reply(`Недостаточно средств! Нужно минимум ${price}.`);
             return;
         }
 

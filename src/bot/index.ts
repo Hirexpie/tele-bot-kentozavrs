@@ -29,7 +29,7 @@ class BotCmd {
     }
 
     public async help(ctx: Context<any>) {
-        await ctx.reply(`/reg - зарегестрироватся при регистраций дается 3000 денег \nsand <sum> <username> - отправить комуто определенныю сумму \ncmd - разшыренны набор команд`)
+        await ctx.reply(`/reg - зарегестрироватся при регистраций дается 3000 денег \nsand <sum> <username> - отправить комуто определенныю сумму \ncmd - разшыренны набор команд\n dep <число> - депнуть денги`)
     }
 
     public async onAnyCmd(ctx: Context<any>) {
@@ -41,21 +41,23 @@ class BotCmd {
         }
 
         if (ctx.from.username === "bilmansur") {
-            await ctx.reply(`завали ебало ${ctx.from.username}`);
-        }
-        if (ctx.from.username === "NLEEECHOPPA") {
-            await ctx.reply(`уу уу уу аа аа уу аа уу аа уууу уу ааа`);
+            await ctx.reply(`маленким слова не довали`);
         }
         const args = ctx.message.text.split(" ");
 
         const cmd = args[0];
-        const arg1 = Number(args[1]);
+        const arg1 = Number(args[1] ?? 0);
 
-        switch (cmd) {
+        switch (cmd.toLowerCase()) {
             case "sand": await rpg.sendMony(ctx); break;
             case "cmd": await kazik.rulet(ctx); break;
             case "atk": await rpg.attak(ctx); break;
-            case "dep": await kazik.stavka(ctx, arg1); break;
+            case "dep":
+                if (arg1 !== 0) {
+                    await ctx.reply(`нужно ввисти dep <число>`);
+                }
+                await kazik.stavka(ctx, arg1);
+                break;
         }
 
         switch (ctx.message.text.toLowerCase()) {

@@ -17,4 +17,4 @@ const kredSchema = new Schema<IKred>({
 });
 
 
-export const Kred = model<IKred>("User", kredSchema);
+export const Kred = model<IKred>("Kredit", kredSchema);

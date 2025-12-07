@@ -56,6 +56,12 @@ class Kredit {
                 moth,
                 userId: String(user._id)
             });
+            await User.findOneAndUpdate(
+                { _id: user._id },
+                { $inc: { balance: +amount } },
+                { new: true }
+            );
+
             await ctx.reply(`Кредит на ${moth} месяцев создан, сумма: ${kredit.sum}`);
         } catch (err) {
             console.error(err);

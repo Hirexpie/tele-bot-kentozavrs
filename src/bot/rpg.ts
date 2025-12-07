@@ -17,9 +17,9 @@ class Rpg {
         }
 
         const cmd = args[0];
-        const amount = Number(args[1]);
+        const amount = Number(args[1] ?? 0);
         const targetUsername = args[2];
-        if (cmd !== "sand") {
+        if (cmd.toLowerCase() !== "sand") {
             await ctx.reply("Ошибка");
             return;
         }

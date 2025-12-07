@@ -2,6 +2,7 @@ import { Context, Markup } from "telegraf";
 import { User } from "../db/entity/user";
 import { kazik } from "./kazik";
 import { rpg } from "./rpg";
+import { kredit } from "./kredit";
 
 class BotCmd {
     public async register(ctx: Context): Promise<void> {
@@ -29,7 +30,7 @@ class BotCmd {
     }
 
     public async help(ctx: Context<any>) {
-        await ctx.reply(`/reg - зарегестрироватся при регистраций дается 3000 денег \nsand <sum> <username> - отправить комуто определенныю сумму \ncmd - разшыренны набор команд\n dep <число> - депнуть денги`)
+        await ctx.reply(`/reg - зарегестрироватся при регистраций дается 3000 денег \nsand <sum> <username> - отправить комуто определенныю сумму \kazik - казино\ndep <число> - депнуть денги\nkred - кредит\nkred <сумма> <месяц> - взять кредить`)
     }
 
     public async onAnyCmd(ctx: Context<any>) {
@@ -47,7 +48,8 @@ class BotCmd {
 
         switch (cmd.toLowerCase()) {
             case "sand": await rpg.sendMony(ctx); break;
-            case "cmd": await kazik.rulet(ctx); break;
+            case "kred": await kredit.getKredit(ctx); break;
+            case "kazik": await kazik.rulet(ctx); break;
             case "atk": await rpg.attak(ctx); break;
             case "dep":
                 if (arg1 === 0) {

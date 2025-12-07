@@ -71,7 +71,7 @@ class Rpg {
 
 
         const args = ctx.message.text.split(" ");
-        if (args.length < 3) {
+        if (args.length < 2) {
             await ctx.reply("Используй: atk <username>");
             return;
         }

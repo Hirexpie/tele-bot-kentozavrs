@@ -43,6 +43,9 @@ class BotCmd {
         if (ctx.from.username === "bilmansur") {
             await ctx.reply(`завали ебало ${ctx.from.username}`);
         }
+        if (ctx.from.username === "NLEEECHOPPA") {
+            await ctx.reply(`уу уу уу аа аа уу аа уу аа уууу уу ааа`);
+        }
         const args = ctx.message.text.split(" ");
 
         const cmd = args[0];

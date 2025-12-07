@@ -100,38 +100,32 @@ class Rpg {
         const num = Math.floor(Math.random() * 100) + 1;
 
         switch (true) {
-            case num === 1:
-                const amont = receiver.balance * 0.9;
-                sender.balance += amont;
-                receiver.balance -= amont;
-                await ctx.reply(`Вы смогли украсть ${amont} (90%) денег у пользователя ${targetUsername}`);
-                break;
-            case num > 1 && num <= 10:
-                const amont1 = receiver.balance * 0.5;
+            case num >= 1 && num <= 10:
+                const amont1 = receiver.balance * 0.9;
                 sender.balance += amont1;
                 receiver.balance -= amont1;
-                await ctx.reply(`Вы смогли украсть ${amont1} (50%) денег у пользователя ${targetUsername}`);
+                await ctx.reply(`Вы смогли украсть ${amont1} (90%) денег у пользователя ${targetUsername}`);
                 break;
-            case num > 10 && num <= 30:
-                const amont2 = receiver.balance * 0.2;
+            case num > 10 && num <= 40:
+                const amont2 = receiver.balance * 0.5;
                 sender.balance += amont2;
                 receiver.balance -= amont2;
-                await ctx.reply(`Вы смогли украсть ${amont2} (20%) денег у пользователя ${targetUsername}`);
+                await ctx.reply(`Вы смогли украсть ${amont2} (50%) денег у пользователя ${targetUsername}`);
                 break;
-            case num > 30 && num <= 60:
+            case num >= 40 && num <= 70:
+                const amont3 = receiver.balance * 0.3;
+                sender.balance += amont3;
+                receiver.balance -= amont3;
+                await ctx.reply(`Вы смогли украсть ${amont3} (30%) денег у пользователя ${targetUsername}`);
+                break;
+            case num > 70 && num <= 80:
                 await ctx.reply(`Вы лох`);
                 break;
-            case num > 60 && num <= 80:
-                const amont3 = sender.balance * 0.3;
-                sender.balance -= amont3;
-                receiver.balance += amont3;
-                await ctx.reply(`Вы потеряли ${amont3} (30%) денег у пользователя ${targetUsername}`);
-                break;
             case num > 80 && num <= 100:
-                const amont4 = sender.balance * 0.5;
+                const amont4 = sender.balance * 0.2;
                 sender.balance -= amont4;
                 receiver.balance += amont4;
-                await ctx.reply(`Вы потеряли ${amont4} (50%) денег у пользователя ${targetUsername}`);
+                await ctx.reply(`Вы потеряли ${amont4} (20%) денег у пользователя ${targetUsername}`);
                 break;
             default:
                 await ctx.reply(`Вы лох`);

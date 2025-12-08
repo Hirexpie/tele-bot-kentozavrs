@@ -4,6 +4,7 @@ import { kazik } from "./kazik";
 import { rpg } from "./rpg";
 import { kredit } from "./kredit";
 
+let isMansurLox = false;
 class BotCmd {
     public async register(ctx: Context): Promise<void> {
         if (!ctx.from) {
@@ -46,6 +47,11 @@ class BotCmd {
         const cmd = args[0];
         const arg1 = Number(args[1] ?? 0);
 
+        if (isMansurLox && ctx.from.username === "bilmansur") {
+            ctx.reply("малолеткам слова не давали")
+            return
+        }
+
         switch (cmd.toLowerCase()) {
             case "sand": await rpg.sendMony(ctx); break;
             case "kred": await kredit.getKredit(ctx); break;
@@ -61,12 +67,29 @@ class BotCmd {
         }
 
         switch (ctx.message.text.toLowerCase()) {
+            case "mansur on": this.mansurOn(ctx); break;
+            case "mansur off": this.mansurOff(ctx); break;
             case "иди на хуй": ctx.reply("кусай за хуй"); break;
             case "иди нахуй": ctx.reply("кусай за хуй"); break;
             case "иди наху": ctx.reply("кусай за хуй"); break;
             case "пошел наху": ctx.reply("кусай за хуй"); break;
             case "пошел нахуй": ctx.reply("кусай за хуй"); break;
             case "пошел на хуй": ctx.reply("кусай за хуй"); break;
+        }
+    }
+
+    private async mansurOn(ctx: Context<any>) {
+        if (ctx.from?.username === "anchik0505" || ctx.from?.username === "KastenSKennedy") {
+            isMansurLox = true;
+            ctx.reply("режим подебать лоха активирован")
+            return;
+        }
+    }
+    private async mansurOff(ctx: Context<any>) {
+        if (ctx.from?.username === "anchik0505" || ctx.from?.username === "KastenSKennedy") {
+            isMansurLox = false;
+            ctx.reply("режим подебать лоха выключен (")
+            return;
         }
     }
 
